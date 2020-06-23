@@ -1,4 +1,4 @@
-# kt11-mobile-app
+# KT11 Mobile App
 This project aims to build an mobile client to access kt11.me stressfully from mobile devices. This currently uses Expo and React Native as the framework of the app though it may be changed in the future.
 
 # Conributions and your rights
