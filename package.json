@@ -1,5 +1,8 @@
 {
+  "name": "kt11-mobile-app",
   "main": "node_modules/expo/AppEntry.js",
+  "author": "Takaki Takeuchi <takaki@takeu.ch> (https://takaki.takeu.ch/)",
+  "license": "Apache-2.0",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -17,6 +20,5 @@
   "devDependencies": {
     "babel-preset-expo": "~8.1.0",
     "@babel/core": "^7.8.6"
-  },
-  "private": true
+  }
 }
