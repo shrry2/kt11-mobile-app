@@ -6,23 +6,15 @@ import { Text, Divider, List, ListItem, Button } from '@ui-kitten/components';
 import Title from '../components/Title';
 import Label from '../components/Label';
 
-import kateGlass from '../assets/illustrations/kateGlass.jpg';
 import ideaBoy from '../assets/illustrations/ideaBoy.jpg'; 
 
-const API_URL = process.env.KT11_API_URL || 'http://192.168.1.10/PERSONAL_PROJECTS/KT11/api/app';
-
-const getCategoriesFromApiAsync = () => {
-  return fetch(`${API_URL}/categories/list`)
-    .then((response) => response.json())
-    .then((responseJson) => {
-      return responseJson.list;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
-
 export default function CategoryList({ categoryList }) {
+  const getHeader = () => (
+    <View style={styles.header}>
+      <Title>カテゴリ一覧</Title>
+    </View>
+  );
+
   const getFooter = () => (
     <View style={styles.footer}>
       <Image source={ideaBoy} style={{ width: 305, height: 159 }} /> 
@@ -61,6 +53,7 @@ export default function CategoryList({ categoryList }) {
     <FlatList style={styles.container}
       data={categoryList}
       renderItem={renderHeading}
+      ListHeaderComponent={getHeader}
       ListFooterComponent={getFooter}
       keyExtractor={(item) => item.heading_title}
     />
@@ -69,12 +62,15 @@ export default function CategoryList({ categoryList }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
     backgroundColor: '#fff',
   },
+  header: {
+    marginTop: 10,
+    padding: 10,
+  },
   heading: {
-    marginTop: 30,
-    marginBottom: 10,
+    marginTop: 10,
+    padding: 10,
   },
   categoryListItem: {
     paddingTop: 18,

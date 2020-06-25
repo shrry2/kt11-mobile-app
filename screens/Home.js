@@ -4,13 +4,12 @@ import { Layout, Text } from '@ui-kitten/components';
 import Constants from 'expo-constants';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
+import { themeColor } from '../theme';
+
 import CategolyList from './CategoryList';
+import ThreadList from '../screens/ThreadList';
 
 const Tab = createMaterialTopTabNavigator();
-
-import ExampleScreen from '../screens/ExampleScreen';
-
-import { themeColor } from '../theme';
 
 const API_URL = process.env.KT11_API_URL || 'http://192.168.1.10/PERSONAL_PROJECTS/KT11/api/app';
 
@@ -42,10 +41,11 @@ export default function HomeScreen() {
   const categoryTabs = [];
   categoryList.forEach((heading) => {
     heading.categories.forEach((category) => {
+      const ThreadListScreen = () => <ThreadList category={category} />;
       categoryTabs.push(
         <Tab.Screen
           name={`cat_${category.id}`}
-          component={ExampleScreen}
+          component={ThreadListScreen}
           options={{ tabBarLabel: category.name }}
           key={`cat_${category.id}`}
         />
@@ -55,11 +55,11 @@ export default function HomeScreen() {
 
   return (
     <Tab.Navigator
-        initialRouteName="cat_1243124341"
+        initialRouteName="Categories"
         tabBarOptions={{
           activeTintColor: themeColor,
           labelStyle: { fontSize: 14 },
-          style: { backgroundColor: 'transparent' },
+          style: { backgroundColor: '#ffffff' },
           scrollEnabled: true,
         }}
         style={styles.container}
